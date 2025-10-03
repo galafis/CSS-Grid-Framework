@@ -1,160 +1,136 @@
-/**
- * Professional CSS Grid Framework
- * @author Gabriel Demetrios Lafis
- */
-
-/* Base Styles */
-:root {
-    --primary-color: #667eea;
-    --secondary-color: #764ba2;
-    --text-color: #333;
-    --background-light: #f4f7f6;
-    --background-dark: #2c3e50;
-    --grid-gap-small: 10px;
-    --grid-gap-medium: 20px;
-    --grid-gap-large: 30px;
+/* src/main.scss */
+/* src/base/_reset.scss */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-light);
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Header */
-.header {
-    background: var(--background-dark);
-    color: white;
-    padding: 40px 0;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.header h1 {
-    margin: 0 0 10px 0;
-    font-size: 3em;
-}
-
-.header p {
-    font-size: 1.2em;
-    opacity: 0.9;
-}
-
-/* Main Content */
-.main-content {
-    padding: 40px 0;
-}
-
-.grid-section {
-    margin-bottom: 60px;
-}
-
-.grid-section h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    color: var(--primary-color);
-}
-
-/* CSS Grid Framework */
+/* src/base/_variables.scss */
+/* src/components/_grid.scss */
+/* src/base/_variables.scss */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  padding: 1rem;
 }
-
-.grid-gap-small {
-    gap: var(--grid-gap-small);
+.grid-container.grid-gap-small {
+  gap: 0.5rem;
 }
-
-.grid-gap-medium {
-    gap: var(--grid-gap-medium);
+.grid-container.grid-gap-medium {
+  gap: 1rem;
 }
-
-.grid-gap-large {
-    gap: var(--grid-gap-large);
+.grid-container.grid-gap-large {
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .grid-item {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 1.2em;
-    font-weight: bold;
+  background-color: #007bff;
+  color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
 }
 
-/* Responsive Grid */
-.grid-responsive {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+.grid-responsive .grid-item.col-1 {
+  grid-column: span 1;
+}
+.grid-responsive .grid-item.col-2 {
+  grid-column: span 2;
+}
+.grid-responsive .grid-item.col-3 {
+  grid-column: span 3;
+}
+.grid-responsive .grid-item.col-4 {
+  grid-column: span 4;
+}
+.grid-responsive .grid-item.col-5 {
+  grid-column: span 5;
+}
+.grid-responsive .grid-item.col-6 {
+  grid-column: span 6;
+}
+.grid-responsive .grid-item.col-7 {
+  grid-column: span 7;
+}
+.grid-responsive .grid-item.col-8 {
+  grid-column: span 8;
+}
+.grid-responsive .grid-item.col-9 {
+  grid-column: span 9;
+}
+.grid-responsive .grid-item.col-10 {
+  grid-column: span 10;
+}
+.grid-responsive .grid-item.col-11 {
+  grid-column: span 11;
+}
+.grid-responsive .grid-item.col-12 {
+  grid-column: span 12;
 }
 
-@media (min-width: 768px) {
-    .grid-responsive {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .grid-responsive {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
-/* Cards */
 .grid-cards {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.grid-cards .card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.grid-cards .card h3 {
+  color: #343a40;
+  margin-bottom: 0.5rem;
+}
+.grid-cards .card p {
+  color: #6c757d;
 }
 
-.card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    text-align: left;
-    transition: transform 0.2s ease-in-out;
+.header {
+  background-color: #343a40;
+  color: #f8f9fa;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+.header h1 {
+  margin-bottom: 0.5rem;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-    font-size: 1.8em;
-}
-
-.card p {
-    color: var(--text-color);
-    font-size: 1em;
-}
-
-/* Footer */
 .footer {
-    background: var(--background-dark);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    font-size: 0.9em;
+  background-color: #343a40;
+  color: #f8f9fa;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
 }
 
-.footer p {
-    margin: 0;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
+.grid-section {
+  margin-bottom: 2rem;
+}
+
+/*# sourceMappingURL=styles.css.map */
